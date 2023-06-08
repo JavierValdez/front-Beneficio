@@ -11,6 +11,7 @@ export class DataService {
 
   constructor(private httpClient:HttpClient ) { }
   //url = ' https://ws-beneficio-pvierapvaq-uc.a.run.app';
+
 //url local
   url = 'http://localhost:8080';
   //Crear usuario
@@ -31,14 +32,15 @@ export class DataService {
   }
 
   //Crear trasportista recibe 4 parametros apellidos nombres numero_licencia tipo_licencia
-  public crearTransportista(apellidos:string, nombres:string, numero_licencia:string, tipo_licencia:string, nit:string, contrasena:string){
+  public crearTransportista(apellidos:string, nombres:string, numero_licencia:string, tipo_licencia:string,imagenBase64:string, nit:string, contrasena:string){
     const url = `${this.url}/Transportista/InscribirTransportista`;
 
     let transportista = {
       numero_licencia: numero_licencia,
       nombres: nombres,
       apellidos: apellidos,
-      tipo_licencia: tipo_licencia
+      tipo_licencia: tipo_licencia,
+      imagen: imagenBase64
     };
     console.log(transportista);
 

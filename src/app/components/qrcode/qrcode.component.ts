@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class QRCODEComponent implements OnInit {
 
   constructor() { }
-  qrdata = 'https://www.google.com';
+  qrdata = 'https://cafetalito-3af53.web.app/Consulta/123/123332';
   ngOnInit(): void {
   }
   abrirPaginaWeb() {

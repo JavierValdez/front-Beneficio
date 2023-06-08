@@ -24,9 +24,9 @@ export class GestorService {
     return this.DataService.ActualizarUsuario(usuario);
   }
   //crearTrasportista
-  public crearTransportista (apellidos:string, nombres:string, numero_licencia:string, tipo_licencia:string){
+  public crearTransportista (apellidos:string, nombres:string, numero_licencia:string, tipo_licencia:string,imagenBase64:string){
     console.log(apellidos, nombres, numero_licencia, tipo_licencia);
-    return <any> this.DataService.crearTransportista(apellidos, nombres, numero_licencia, tipo_licencia,'97954942','12345');
+    return <any> this.DataService.crearTransportista(apellidos, nombres, numero_licencia, tipo_licencia,imagenBase64,'97954942','12345');
   }
   //getTransportista
   public getTransportista (){

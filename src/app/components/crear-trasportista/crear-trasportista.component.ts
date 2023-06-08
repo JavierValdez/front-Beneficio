@@ -13,6 +13,8 @@ export class CrearTrasportistaComponent implements OnInit {
   nombres: string = "";
   numero_licencia: string = "";
   tipo_licencia: string = "";
+  imagenSeleccionada: File | null = null;
+  imagenBase64: any = "";
 
   constructor(private gestorService: GestorService) { }
 
@@ -27,7 +29,7 @@ export class CrearTrasportistaComponent implements OnInit {
     //Conexion al servicio, funciona en caso de un error 400
     try
     {
-      this.gestorService.crearTransportista(this.apellidos, this.nombres, this.numero_licencia, this.tipo_licencia).subscribe(
+      this.gestorService.crearTransportista(this.apellidos, this.nombres, this.numero_licencia, this.tipo_licencia,this.imagenBase64).subscribe(
         (data: any) => {
           console.log(data);
           //Evalua si la respuesta fue "El Transportista debe tener licencia tipo A"
@@ -60,10 +62,24 @@ export class CrearTrasportistaComponent implements OnInit {
     }
 
 
+  }
+  onImageSelected(event: any) {
+    const file = event.target.files[0];
 
+  const reader = new FileReader();
+  reader.onload = () => {
+    const base64String = reader.result as string;
+    this.imagenBase64 = base64String.split(',')[1];
+  };
 
+  reader.readAsDataURL(file);
+  //mostrar despues de 5 segundos
+  setTimeout(() => {
 
+  console.log(this.imagenBase64);
+  }, 100);
 
 
   }
+
 }

@@ -26,6 +26,7 @@
       <div class="card">
         <div class="card-body">
           <h2 class="card-title">Transportista</h2>
+          <img [src]="'data:image/png;base64,' + this.transportista.imagen" alt="Imagen de perfil">
           <p><strong>Nombres:</strong> {{ this.transportista.nombres }}</p>
           <p><strong>Apellidos:</strong> {{ this.transportista.apellidos }}</p>
           <p><strong>Número de licencia:</strong> {{ this.transportista.numero_licencia }}</p>
