@@ -32,7 +32,7 @@ export class RegistroBeneficioComponent implements OnInit {
       edad: this.edad,
       nit: this.nit,
       telefono: this.telefono,
-      rol:"Agricultor"
+      rol:"none"
     };
 
     console.log(registroData);
@@ -48,7 +48,8 @@ export class RegistroBeneficioComponent implements OnInit {
           confirmButtonText: "Aceptar",
         }).then((result) => {
           if (result.isConfirmed) {
-            window.location.reload();
+            //reinicio de registro data
+            
           }
         });
 

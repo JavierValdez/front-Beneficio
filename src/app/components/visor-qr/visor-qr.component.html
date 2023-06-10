@@ -1,9 +1,6 @@
-
-<p>Parámetro 1: {{ parametro1 }}</p>
-<p>Parámetro 2: {{ parametro2 }}</p>
 <div class="container">
-  <!--
-    <div class="row justify-content-center">
+  <!-- Elimina este comentario
+  <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="card">
         <div class="card-body">
@@ -19,14 +16,14 @@
       </div>
     </div>
   </div>
--->
+  -->
   <hr>
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="card">
-        <div class="card-body">
+        <div class="card-body text-center">
           <h2 class="card-title">Transportista</h2>
-          <img [src]="'data:image/png;base64,' + this.transportista.imagen" alt="Imagen de perfil">
+          <img class="custom-image" [src]="'data:image/png;base64,' + this.transportista.imagen" alt="Imagen de perfil">
           <p><strong>Nombres:</strong> {{ this.transportista.nombres }}</p>
           <p><strong>Apellidos:</strong> {{ this.transportista.apellidos }}</p>
           <p><strong>Número de licencia:</strong> {{ this.transportista.numero_licencia }}</p>

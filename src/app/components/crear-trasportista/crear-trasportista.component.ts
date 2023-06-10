@@ -15,6 +15,7 @@ export class CrearTrasportistaComponent implements OnInit {
   tipo_licencia: string = "";
   imagenSeleccionada: File | null = null;
   imagenBase64: any = "";
+  contrasena: string = "";
   //Emite evento cuando se carga con parametros
   @Output()
   imagenCargada = new EventEmitter<string>();
@@ -54,7 +55,8 @@ export class CrearTrasportistaComponent implements OnInit {
           "nombres": this.nombres,
           "numero_licencia": this.numero_licencia,
           "tipo_licencia": this.tipo_licencia,
-          "imagen": this.imagenBase64
+          "imagen": this.imagenBase64,
+          'contrasena': this.contrasena
         }
 
         console.log("Json a enviar");

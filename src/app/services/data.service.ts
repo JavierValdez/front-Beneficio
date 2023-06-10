@@ -105,6 +105,32 @@ export class DataService {
     );
   }
 
+  //Transportista/login
+  public loginTransportista(nit:string, contrasena:string){
+
+      //Imprimir datos a enviar
+      console.log(nit, contrasena);
+      const url = `${this.url}/Transportista/login`;
+      const params = { user: nit, contrasena: contrasena };
+      //Envia los datos a la url por metodo post
+
+      return this.httpClient.post<any>(url, params, { params }).pipe(
+        catchError((error: HttpErrorResponse) => {
+          //Mensaje de error alerta
+          Swal.fire({
+            icon: 'error',
+            title: 'Error al iniciar sesión:',
+            html:  error.error.errores
+          });
+          console.log('Error al iniciar sesión:', error.error.errores);
+          console.error('Error al iniciar sesión:', error);
+          return throwError('Algo salió mal en la petición HTTP.');
+        }
+        )
+      );
+    }
+
+
 
 
 

@@ -11,7 +11,7 @@ export class GestorComponentComponent implements OnInit {
     opcion1: string = 'Crear Agricultor';
     opcion2: string = 'Crear Transportista';
     opcion3: string = 'Crear Transporte';
-    opcion4: string = 'Opción 4';
+    opcion4: string = 'Generar QR';
     opcion5: string = 'Cerrar sesión';
 
     color1: string = '#8B4513'; // Marrón
@@ -23,7 +23,7 @@ export class GestorComponentComponent implements OnInit {
     verRegistro: boolean = false;
     verLogin: boolean = true;
     verCrearTransportista: boolean = false;
-
+    verQR: boolean = false;
     currentUser: any;
     esTrasportista: boolean = false;
     esAgricultor: boolean = false;
@@ -36,6 +36,8 @@ export class GestorComponentComponent implements OnInit {
     if (localStorage.getItem('token')) {
       this.GestorService.DataUsuario=localStorage.getItem('token');
       this.GestorService.DataUsuario=JSON.parse(this.GestorService.DataUsuario);
+      this.GestorService.DataUsuario.rol=localStorage.getItem('role');
+      this.currentUser =this.GestorService.DataUsuario;
       this.usuarioLogueado();
       this.validarRol();
 
@@ -46,14 +48,12 @@ export class GestorComponentComponent implements OnInit {
     console.log("Confirmacion de logueo"+this.GestorService.DataUsuario)
     this.verOpciones= true;
     this.verLogin= false;
+    //reinicia ver
+    this.verCrearTransportista= false;
+    console.log("Usuario logueado",this.currentUser)
+    console.log('v1')
     this.currentUser =this.GestorService.DataUsuario;
     this.validarRol();
-    //reinicia ver
-    this.verRegistro= false;
-    this.verCrearTransportista= false;
-    console.log("Usuario logueado"+this.currentUser.nombre)
-    console.log('v1')
-
     //
   }
   //Cerrar sesion
@@ -98,16 +98,27 @@ export class GestorComponentComponent implements OnInit {
     this.verOpciones= false;
     this.verLogin= false;
 
+
   }
 
   //ver crear transportista
   onVerCrearTransportista(){
     console.log("Crear Transportista")
     this.verCrearTransportista= true;
-    this.verOpciones= false;
     this.verLogin= false;
 
   }
+
+  //ver QR
+  onVerQR(){
+    if( this.currentUser.numero_licencia!=null){
+    console.log("Ver QR")
+    this.verQR= true;
+    this.verLogin= false;
+    this.verOpciones= true;
+    }
+  }
+
   //valida el rol del usuario
   validarRol(){
 
@@ -121,6 +132,8 @@ export class GestorComponentComponent implements OnInit {
       this.esPesoCabal=true;
     }
   }
+
+
 
 
 
