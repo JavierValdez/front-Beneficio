@@ -31,7 +31,8 @@ export class RegistroBeneficioComponent implements OnInit {
       direccion: this.direccion,
       edad: this.edad,
       nit: this.nit,
-      telefono: this.telefono
+      telefono: this.telefono,
+      rol:"Agricultor"
     };
 
     console.log(registroData);
@@ -78,7 +79,7 @@ export class RegistroBeneficioComponent implements OnInit {
           icon: "error",
           confirmButtonText: "Aceptar",
         });
-        
+
 
       }
     );

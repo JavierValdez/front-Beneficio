@@ -15,6 +15,8 @@ import { CrearTrasportistaComponent } from './components/crear-trasportista/crea
 import { QRCodeModule } from 'angularx-qrcode';
 import { QRCODEComponent } from './components/qrcode/qrcode.component';
 import { VisorQRComponent } from './components/visor-qr/visor-qr.component';
+import { GestorComponentComponent } from './components/gestor-component/gestor-component.component';
+import { CrearAgricultorComponent } from './components/crear-agricultor/crear-agricultor.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { VisorQRComponent } from './components/visor-qr/visor-qr.component';
     UpdateUserComponent,
     CrearTrasportistaComponent,
     QRCODEComponent,
-    VisorQRComponent
+    VisorQRComponent,
+    GestorComponentComponent,
+    CrearAgricultorComponent
   ],
   imports: [
     BrowserModule,

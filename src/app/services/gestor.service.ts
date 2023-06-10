@@ -7,6 +7,7 @@ export class GestorService {
 
   constructor( private DataService:DataService) { }
 
+  DataUsuario:any;
   //Crear usuario
   public crearUsuario(usuario:any){
     console.log(usuario);
@@ -24,13 +25,21 @@ export class GestorService {
     return this.DataService.ActualizarUsuario(usuario);
   }
   //crearTrasportista
-  public crearTransportista (apellidos:string, nombres:string, numero_licencia:string, tipo_licencia:string,imagenBase64:string){
-    console.log(apellidos, nombres, numero_licencia, tipo_licencia);
-    return <any> this.DataService.crearTransportista(apellidos, nombres, numero_licencia, tipo_licencia,imagenBase64,'97954942','12345');
+  public crearTransportista (json:any,password:string){
+    console.log('En el gestor service')
+    console.log(json);
+    console.log(password);
+    console.log('nit')
+    console.log(this.DataUsuario.nit);
+    return this.DataService.crearTransportista(json, this.DataUsuario.nit,password);
   }
   //getTransportista
   public getTransportista (){
     return <any> this.DataService.getTransportista();
+  }
+  //Login
+  public login (nit:string, contrasena:string){
+    return <any> this.DataService.login(nit, contrasena);
   }
 
 

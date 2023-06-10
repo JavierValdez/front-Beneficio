@@ -1,1 +1,38 @@
-<p>login-form works!</p>
+<form class="form-signin" (ngSubmit)="login()" #loginForm="ngForm">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+  <div class="text-center mb-4">
+    <span style="font-size: 10vw;" class="material-symbols-outlined">
+      login
+    </span>
+  </div>
+
+  <h1 class="h3 mb-3 font-weight-normal">Iniciar sesión</h1>
+
+  <label for="inputNit" class="sr-only">NIT</label>
+  <input type="text" id="inputNit" class="form-control" placeholder="NIT" required [(ngModel)]="nit" name="nit">
+
+  <label for="inputPassword" class="sr-only">Contraseña</label>
+  <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required
+    [(ngModel)]="password" name="password">
+
+    <div class="form-group">
+      <label for="role">Rol:</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="role" value="agricultor" [(ngModel)]="role">
+        <label class="form-check-label" for="role">Agricultor</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="role" value="transportista" [(ngModel)]="role">
+        <label class="form-check-label" for="role">Transportista</label>
+      </div>
+    </div>
+
+
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
+
+  <div class="mt-3">
+    ¿No tienes una cuenta? <a href="#" (click)="showRegistration()">Regístrate</a>
+  </div>
+</form>
