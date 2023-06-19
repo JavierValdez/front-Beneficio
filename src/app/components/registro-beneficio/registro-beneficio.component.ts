@@ -16,6 +16,8 @@ export class RegistroBeneficioComponent implements OnInit {
   edad: number=0;
   nit: string="";
   telefono: string="";
+  nombreUsuario: string="";
+
 
   constructor(private GestorService:GestorService ) { }
 
@@ -24,16 +26,19 @@ export class RegistroBeneficioComponent implements OnInit {
 
   onSubmit() {
     const registroData = {
-      nombre: this.nombre,
-      apellido: this.apellido,
-      correo: this.correo,
-      contrasena: this.contrasena,
+      nombre: this.nombre +this.apellido,
+      email: this.correo,
+      password: this.contrasena,
       direccion: this.direccion,
-      edad: this.edad,
+      fecha_creacion: new Date(),
       nit: this.nit,
       telefono: this.telefono,
-      rol:"none"
-    };
+      roles:[
+        "admin"
+      ],
+      nombreUsuario: this.nombreUsuario,
+};
+
 
     console.log(registroData);
     //Petición a la API
@@ -49,7 +54,7 @@ export class RegistroBeneficioComponent implements OnInit {
         }).then((result) => {
           if (result.isConfirmed) {
             //reinicio de registro data
-            
+
           }
         });
 
@@ -68,6 +73,7 @@ export class RegistroBeneficioComponent implements OnInit {
         this.edad=0;
         this.nit="";
         this.telefono="";
+        this.nombreUsuario="";
 
 
       },

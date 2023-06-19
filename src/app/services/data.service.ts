@@ -10,15 +10,15 @@ import Swal from 'sweetalert2';
 export class DataService {
 
   constructor(private httpClient:HttpClient ) { }
-  url = ' https://ws-beneficio-pvierapvaq-uc.a.run.app';
+  //url = ' https://ws-beneficio-pvierapvaq-uc.a.run.app';
 
 //url local
-  //url = 'http://localhost:8080';
+  url = 'http://localhost:8080';
   //Crear usuario
   public crearUsuario(usuario:any){
     console.log(usuario);
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient.post(this.url + '/create/user', usuario, { headers });
+    return this.httpClient.post(this.url + '/auth/nuevo', usuario, { headers });
   }
 
   //Listar usuarios
@@ -81,15 +81,15 @@ export class DataService {
   }
 
   //Realizar login con nit y contraseña a la url /login
-  public login(nit:string, contrasena:string){
+  public Login(usuario:string, contrasena:string){
 
     //Imprimir datos a enviar
-    console.log(nit, contrasena);
-    const url = `${this.url}/login`;
-    const params = { user: nit, contrasena: contrasena };
+    console.log(usuario, contrasena);
+    const url = `${this.url}/auth/login`;
+    const params = { nombreUsuario: usuario, password: contrasena };
     //Envia los datos a la url por metodo post
 
-    return this.httpClient.post<any>(url, params, { params }).pipe(
+    return this.httpClient.post<any>(url, params).pipe(
       catchError((error: HttpErrorResponse) => {
         //Mensaje de error alerta
         Swal.fire({
@@ -104,33 +104,6 @@ export class DataService {
       )
     );
   }
-
-  //Transportista/login
-  public loginTransportista(nit:string, contrasena:string){
-
-      //Imprimir datos a enviar
-      console.log(nit, contrasena);
-      const url = `${this.url}/Transportista/login`;
-      const params = { user: nit, contrasena: contrasena };
-      //Envia los datos a la url por metodo post
-
-      return this.httpClient.post<any>(url, params, { params }).pipe(
-        catchError((error: HttpErrorResponse) => {
-          //Mensaje de error alerta
-          Swal.fire({
-            icon: 'error',
-            title: 'Error al iniciar sesión:',
-            html:  error.error.errores
-          });
-          console.log('Error al iniciar sesión:', error.error.errores);
-          console.error('Error al iniciar sesión:', error);
-          return throwError('Algo salió mal en la petición HTTP.');
-        }
-        )
-      );
-    }
-
-
 
 
 

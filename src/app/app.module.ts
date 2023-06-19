@@ -17,6 +17,11 @@ import { QRCODEComponent } from './components/qrcode/qrcode.component';
 import { VisorQRComponent } from './components/visor-qr/visor-qr.component';
 import { GestorComponentComponent } from './components/gestor-component/gestor-component.component';
 import { CrearAgricultorComponent } from './components/crear-agricultor/crear-agricultor.component';
+import { CompPruebaComponent } from './components/comp-prueba/comp-prueba.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import {HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthService } from './auth/auth.service';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +34,8 @@ import { CrearAgricultorComponent } from './components/crear-agricultor/crear-ag
     QRCODEComponent,
     VisorQRComponent,
     GestorComponentComponent,
-    CrearAgricultorComponent
+    CrearAgricultorComponent,
+    CompPruebaComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +45,10 @@ import { CrearAgricultorComponent } from './components/crear-agricultor/crear-ag
     ReactiveFormsModule,
     QRCodeModule
   ],
-  providers: [],
+  providers: [
+    // Agrega el interceptor como un proveedor
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -33,15 +33,10 @@ export class GestorComponentComponent implements OnInit {
 
   ngOnInit(): void {
     //Verificar si existe sesion previa en localStorage
-    if (localStorage.getItem('token')) {
-      this.GestorService.DataUsuario=localStorage.getItem('token');
-      this.GestorService.DataUsuario=JSON.parse(this.GestorService.DataUsuario);
-      this.GestorService.DataUsuario.rol=localStorage.getItem('role');
-      this.currentUser =this.GestorService.DataUsuario;
-      this.usuarioLogueado();
+    if(localStorage.getItem('token')!=null){
       this.validarRol();
-
     }
+
   }
   //Usuario logueado
   usuarioLogueado(){
@@ -123,12 +118,23 @@ export class GestorComponentComponent implements OnInit {
   validarRol(){
 
     console.log("Validar rol")
-    console.log(this.currentUser.rol)
-    if(this.currentUser.rol=="Agricultor"){
+    console.log(localStorage.getItem('rol'))
+    let rol = localStorage.getItem('rol');
+    if(rol=='ROLE_ADMIN'){
+      console.log("Es admin")
       this.esAgricultor=true;
-    }else if(this.currentUser.rol=="Transportista"){
       this.esTrasportista=true;
-    }else if(this.currentUser.rol=="PesoCabal"){
+      this.esPesoCabal=true;
+      this.verOpciones= true;
+      this.verLogin= false;
+    }else if(rol=="ROLE_AGRICULTOR"){
+      this.esAgricultor=true;
+      this.verOpciones= true;
+      this.verLogin= false;
+      this.esPesoCabal=false;
+      this.esTrasportista=false;
+
+    }else if(rol=="ROL_PESOCABAL"){
       this.esPesoCabal=true;
     }
   }

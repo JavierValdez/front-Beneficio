@@ -38,12 +38,8 @@ export class GestorService {
     return <any> this.DataService.getTransportista();
   }
   //Login
-  public login (nit:string, contrasena:string){
-    return <any> this.DataService.login(nit, contrasena);
-  }
-  //TrasportistaLogin
-  public TrasportistaLogin (nit:string, contrasena:string){
-    return <any> this.DataService.loginTransportista(nit, contrasena);
+  public Login(usuario:string, contrasena:string){
+    return <any> this.DataService.Login(usuario, contrasena);
   }
   //getTransportista
 

@@ -1,70 +1,63 @@
-<div class="container">
-  <h1 class="text-center">Formulario de Registro Agricultor</h1>
-  <form (ngSubmit)="onSubmit()" #registroForm="ngForm">
-    <div class="form-group">
-      <label for="nombre">Nombre</label>
-      <input type="text" class="form-control" id="nombre" required [(ngModel)]="nombre" name="nombre" #nombreRef="ngModel">
-      <div *ngIf="nombreRef.invalid && nombreRef.touched" class="alert alert-danger">
-        Nombre es requerido
-      </div>
-    </div>
 
-    <div class="form-group">
-      <label for="apellido">Apellido</label>
-      <input type="text" class="form-control" id="apellido" required [(ngModel)]="apellido" name="apellido" #apellidoRef="ngModel">
-      <div *ngIf="apellidoRef.invalid && apellidoRef.touched" class="alert alert-danger">
-        Apellido es requerido
+<div >
+  <div class="container" style="background-color: #F5DEB3; padding: 20px;">
+    <h1 class="text-center" style="color: #8B4513;">Formulario de Registro de Agricultor</h1>
+    <form (ngSubmit)="onSubmit()" #registroForm="ngForm">
+      <div class="form-group">
+        <label for="nombre" style="color: #8B4513;">Nombre</label>
+        <input type="text" class="form-control" id="nombre" required [(ngModel)]="nombre" name="nombre" #nombreRef="ngModel" style="border-color: #8B4513;">
+        <div *ngIf="nombreRef.invalid && nombreRef.touched" class="alert alert-danger" style="color: #8B0000;">
+               </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label for="correo">Correo</label>
-      <input type="email" class="form-control" id="correo" required [(ngModel)]="correo" name="correo" #correoRef="ngModel">
-      <div *ngIf="correoRef.invalid && correoRef.touched" class="alert alert-danger">
-        Correo es requerido
+      <div class="form-group">
+        <label for="email" style="color: #8B4513;">Email</label>
+        <input type="email" class="form-control" id="email" required [(ngModel)]="correo" name="email" #emailRef="ngModel" style="border-color: #8B4513;">
+        <div *ngIf="emailRef.invalid && emailRef.touched" class="alert alert-danger" style="color: #8B0000;">
+          Email es requerido
+        </div>
       </div>
-    </div>
-
-    <div class="form-group">
-      <label for="contrasena">Contraseña</label>
-      <input type="password" class="form-control" id="contrasena" required [(ngModel)]="contrasena" name="contrasena" #contrasenaRef="ngModel">
-      <div *ngIf="contrasenaRef.invalid && contrasenaRef.touched" class="alert alert-danger">
-        Contraseña es requerida
+      <div class="form-group">
+        <label for="direccion" style="color: #8B4513;">Dirección</label>
+        <input type="text" class="form-control" id="direccion" required [(ngModel)]="direccion" name="direccion" #direccionRef="ngModel" style="border-color: #8B4513;">
+        <div *ngIf="direccionRef.invalid && direccionRef.touched" class="alert alert-danger" style="color: #8B0000;">
+          Dirección es requerida
+        </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label for="direccion">Dirección</label>
-      <input type="text" class="form-control" id="direccion" required [(ngModel)]="direccion" name="direccion" #direccionRef="ngModel">
-      <div *ngIf="direccionRef.invalid && direccionRef.touched" class="alert alert-danger">
-        Dirección es requerida
+      <div class="form-group">
+        <label for="nit" style="color: #8B4513;">NIT</label>
+        <input type="text" class="form-control" id="nit" required [(ngModel)]="nit" name="nit" #nitRef="ngModel" style="border-color: #8B4513;">
+        <div *ngIf="nitRef.invalid && nitRef.touched" class="alert alert-danger" style="color: #8B0000;">
+          NIT es requerido
+        </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label for="edad">Edad</label>
-      <input type="number" class="form-control" id="edad" required [(ngModel)]="edad" name="edad" #edadRef="ngModel">
-      <div *ngIf="edadRef.invalid && edadRef.touched" class="alert alert-danger">
-        Edad es requerida
+      <div class="form-group">
+        <label for="nombreUsuario" style="color: #8B4513;">Nombre de usuario</label>
+        <input type="text" class="form-control" id="nombreUsuario" required [(ngModel)]="nombreUsuario" name="nombreUsuario" #nombreUsuarioRef="ngModel" style="border-color: #8B4513;">
+        <div *ngIf="nombreUsuarioRef.invalid && nombreUsuarioRef.touched" class="alert alert-danger" style="color: #8B0000;">
+          Nombre de usuario es requerido
+        </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label for="nit">NIT</label>
-      <input type="text" class="form-control" id="nit" required [(ngModel)]="nit" name="nit" #nitRef="ngModel">
-      <div *ngIf="nitRef.invalid && nitRef.touched" class="alert alert-danger">
-        NIT es requerido
+      <div class="form-group">
+        <label for="password" style="color: #8B4513;">Contraseña</label>
+        <input type="password" class="form-control" id="password" required [(ngModel)]="contrasena" name="password" #passwordRef="ngModel" style="border-color: #8B4513;">
+        <div *ngIf="passwordRef.invalid && passwordRef.touched" class="alert alert-danger" style="color: #8B0000;">
+          Contraseña es requerida
+        </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label for="telefono">Teléfono</label>
-      <input type="text" class="form-control" id="telefono" required [(ngModel)]="telefono" name="telefono" #telefonoRef="ngModel">
-      <div *ngIf="telefonoRef.invalid && telefonoRef.touched" class="alert alert-danger">
-        Teléfono es requerido
+      <div class="form-group">
+        <label for="telefono" style="color: #8B4513;">Teléfono</label>
+        <input type="text" class="form-control" id="telefono" required [(ngModel)]="telefono" name="telefono" #telefonoRef="ngModel" style="border-color: #8B4513;">
+        <div *ngIf="telefonoRef.invalid && telefonoRef.touched" class="alert alert-danger" style="color: #8B0000;">
+          Teléfono es requerido
+        </div>
       </div>
-    </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="registroForm.form.invalid">Registrar</button>
-  </form>
-</div>
+      <button type="submit" class="btn btn-primary" [disabled]="registroForm.form.invalid" style="background-color: #8B4513; border-color: #8B4513;">Registrar</button>
+    </form>
+  </div>
+  </div>
