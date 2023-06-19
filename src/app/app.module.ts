@@ -21,6 +21,7 @@ import { CompPruebaComponent } from './components/comp-prueba/comp-prueba.compon
 import { AuthInterceptor } from './auth/auth.interceptor';
 import {HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './auth/auth.service';
+import { CrearTrasporteComponent } from './components/crear-trasporte/crear-trasporte.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { AuthService } from './auth/auth.service';
     VisorQRComponent,
     GestorComponentComponent,
     CrearAgricultorComponent,
-    CompPruebaComponent
+    CompPruebaComponent,
+    CrearTrasporteComponent
   ],
   imports: [
     BrowserModule,

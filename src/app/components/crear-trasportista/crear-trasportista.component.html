@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="text-center">Crear Transportista</h2>
+      <form>
+        <div class="form-group">
+          <label for="apellidos">Apellidos:</label>
+          <input type="text" class="form-control" id="apellidos" [(ngModel)]="apellidos" name="apellidos">
+        </div>
+        <div class="form-group">
+          <label for="nombres">Nombres:</label>
+          <input type="text" class="form-control" id="nombres" [(ngModel)]="nombres" name="nombres">
+        </div>
+        <div class="form-group">
+          <label for="numero_licencia">Número de Licencia:</label>
+          <input type="text" class="form-control" id="numero_licencia" [(ngModel)]="numero_licencia" name="numero_licencia">
+        </div>
+        <div class="form-group">
+          <label for="tipo_licencia">Tipo de Licencia:</label>
+          <input type="text" class="form-control" id="tipo_licencia" [(ngModel)]="tipo_licencia" name="tipo_licencia">
+        </div>
+        <div class="form-group">
+          <label for="imagen">Imagen:</label>
+          <input type="file" class="form-control-file" id="imagen" (change)="onImageSelected($event)">
+        </div>
+        <div class="form-group">
+          <label for="contrasena">Contraseña:</label>
+          <input type="password" class="form-control" id="contrasena" [(ngModel)]="contrasena" name="contrasena">
+        </div>
+        <button type="button" class="btn btn-primary btn-block" (click)="crearTransportista()">Crear Transportista</button>
+      </form>
+    </div>
+  </div>
+</div>
