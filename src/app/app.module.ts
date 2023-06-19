@@ -22,6 +22,9 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import {HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './auth/auth.service';
 import { CrearTrasporteComponent } from './components/crear-trasporte/crear-trasporte.component';
+import { CrearCuentaComponent } from './components/crear-cuenta/crear-cuenta.component';
+import { IngresoGaritaComponent } from './components/ingreso-garita/ingreso-garita.component';
+import { InactivarTrasportistaComponent } from './components/inactivar-trasportista/inactivar-trasportista.component';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { CrearTrasporteComponent } from './components/crear-trasporte/crear-tras
     GestorComponentComponent,
     CrearAgricultorComponent,
     CompPruebaComponent,
-    CrearTrasporteComponent
+    CrearTrasporteComponent,
+    CrearCuentaComponent,
+    IngresoGaritaComponent,
+    InactivarTrasportistaComponent
   ],
   imports: [
     BrowserModule,

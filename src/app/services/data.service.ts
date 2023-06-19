@@ -10,10 +10,10 @@ import Swal from 'sweetalert2';
 export class DataService {
 
   constructor(private httpClient:HttpClient ) { }
-  //url = ' https://ws-beneficio-pvierapvaq-uc.a.run.app';
+  url = ' https://ws-beneficio-pvierapvaq-uc.a.run.app';
 
 //url local
-  url = 'http://localhost:8080';
+  //url = 'http://localhost:8080';
   //Crear usuario
   public crearUsuario(usuario:any){
     console.log(usuario);
@@ -32,19 +32,16 @@ export class DataService {
   }
 
   //Crear trasportista recibe 4 parametros apellidos nombres numero_licencia tipo_licencia
-  public crearTransportista(json:string, nit:string, contrasena:string){
+  public crearTransportista(json:string){
      console.log('En el data service')
     const url = `${this.url}/Transportista/InscribirTransportista`;
 
     console.log('En el data service');
     console.log(url);
-    console.log(nit);
-    console.log(contrasena);
     console.log(json);
 
-    const params = { nit: nit, contrasena: contrasena };
 
-    return this.httpClient.post<any>(url, json, { params }).pipe(
+    return this.httpClient.post<any>(url, json).pipe(
       catchError((error: HttpErrorResponse) => {
         //formatea error.error.errores colocando saltosd e linea cada vez que encuentre -
         error.error.errores = error.error.errores.replace(/,/g, '');
@@ -102,6 +99,91 @@ export class DataService {
         return throwError('Algo salió mal en la petición HTTP.');
       }
       )
+    );
+  }
+
+  //metodo post para crear transporte
+  public postTransporte (json:any){
+    const url = `${this.url}/Transporte/InscribirTransporte`;
+    return this.httpClient.post<any>(url, json).pipe(
+      catchError((error: HttpErrorResponse) => {
+        //Mensaje de error alerta
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al crear transporte:',
+          html:  error.error.errores
+        });
+        console.log('Error al crear transporte:', error.error.errores);
+        console.error('Error al crear transporte:', error);
+        return throwError('Algo salió mal en la petición HTTP.');
+      })
+    );
+  }
+  public postCuenta (json:any){
+    const url = `${this.url}/Cuenta/CrearCuenta`;
+    return this.httpClient.post<any>(url, json).pipe(
+      catchError((error: HttpErrorResponse) => {
+        //Mensaje de error alerta
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al crear transporte:',
+          html:  error.error.errores
+        });
+        console.log('Error al crear transporte:', error.error.errores);
+        console.error('Error al crear transporte:', error);
+        return throwError('Algo salió mal en la petición HTTP.');
+      })
+    );
+  }
+  public ingresoGarita (json:any){
+    const url = `${this.url}/Beneficio/RegistrarIngreso`;
+    return this.httpClient.post<any>(url, json).pipe(
+      catchError((error: HttpErrorResponse) => {
+        //Mensaje de error alerta
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al crear Ingreso:',
+          html:  error.error.errores
+        });
+        console.log('Error al crear Ingreso:', error.error.errores);
+        console.error('Error al crear Ingreso:', error);
+        return throwError('Algo salió mal en la petición HTTP.');
+      })
+    );
+  }
+  //Get obtener transportistas
+  public getTransportistas(){
+    const url = `${this.url}/Transportista/EncuentraTransportista`;
+    return this.httpClient.get<any>(url).pipe(
+      catchError((error: HttpErrorResponse) => {
+        //Mensaje de error alerta
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al obtener transportistas:',
+          html:  error.error.errores
+        });
+        console.log('Error al obtener transportistas:', error.error.errores);
+        console.error('Error al obtener transportistas:', error);
+        return throwError('Algo salió mal en la petición HTTP.');
+      })
+    );
+  }
+
+  //Post Inactivar transportista
+  public inactivarTransportista(json:any){
+    const url = `${this.url}/Transportista/eliminarTransportista`;
+    return this.httpClient.post<any>(url, json).pipe(
+      catchError((error: HttpErrorResponse) => {
+        //Mensaje de error alerta
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al inactivar transportista:',
+          html:  error.error.errores
+        });
+        console.log('Error al inactivar transportista:', error.error.errores);
+        console.error('Error al inactivar transportista:', error);
+        return throwError('Algo salió mal en la petición HTTP.');
+      })
     );
   }
 

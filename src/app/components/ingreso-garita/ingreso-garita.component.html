@@ -1,0 +1,52 @@
+<div class=" container" style=" display: flex; justify-content: center;">
+  <div class="card " style="max-width: 40vw; width: 30vw; margin-top: 0;">
+    <div class="card-header">
+      <h5 class="card-title">Ingreso Garita</h5>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="formulario" (ngSubmit)="enviar()">
+        <!--id_cuenta-->
+        <div class="form-group">
+          <label>Id cuenta:</label>
+          <input type="text" class="form-control" formControlName="id_cuenta">
+          <div *ngIf="enviado && formulario.controls.id_cuenta.errors" class="text-danger">
+            {{ formulario.controls.id_cuenta.errors.required ? 'El id cuenta es obligatorio' : '' }}
+          </div>
+        </div>
+        <!--id_ingreso-->
+        <div class="form-group">
+          <label>id Ingreso:</label>
+          <input type="text" class="form-control" formControlName="id_ingreso">
+          <div *ngIf="enviado && formulario.controls.id_ingreso.errors" class="text-danger">
+            {{ formulario.controls.id_ingreso.errors.required ? 'El id garita es obligatorio' : '' }}
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Licencia autorizada:</label>
+          <input type="text" class="form-control" formControlName="licencia_autorizada">
+          <div *ngIf="enviado && formulario.controls.licencia_autorizada.errors" class="text-danger">
+            {{ formulario.controls.licencia_autorizada.errors.required ? 'La licencia autorizada es obligatoria' : '' }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Matrícula autorizada:</label>
+          <input type="text" class="form-control" formControlName="matricula_autorizada">
+          <div *ngIf="enviado && formulario.controls.matricula_autorizada.errors" class="text-danger">
+            {{ formulario.controls.matricula_autorizada.errors.required ? 'La matrícula autorizada es obligatoria' : '' }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Usuario agricultor:</label>
+          <input type="text" class="form-control" formControlName="usuario_agricultor">
+          <div *ngIf="enviado && formulario.controls.usuario_agricultor.errors" class="text-danger">
+            {{ formulario.controls.usuario_agricultor.errors.required ? 'El usuario agricultor es obligatorio' : '' }}
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+    </div>
+  </div>
+</div>

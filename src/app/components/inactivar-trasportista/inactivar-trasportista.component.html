@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <h2 class="mb-4">Inactivar Transportista</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Número de Licencia</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Tipo de Licencia</th>
+        <th>Fecha de Inscripción</th>
+        <th>Usuario que Creó</th>
+        <th>Disponibilidad</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let licencia of licencias">
+        <td>{{ licencia.numero_licencia }}</td>
+        <td>{{ licencia.nombres }}</td>
+        <td>{{ licencia.apellidos }}</td>
+        <td>{{ licencia.tipo_licencia }}</td>
+        <td>{{ licencia.fecha_inscripcion }}</td>
+        <td>{{ licencia.usuario_creo }}</td>
+        <td>{{ licencia.disponibilidad }}</td>
+        <td>
+          <button class="btn btn-danger" (click)="inactivarTransportista(licencia)">Inactivar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -23,11 +23,16 @@ export class GestorComponentComponent implements OnInit {
     verRegistro: boolean = false;
     verLogin: boolean = true;
     verCrearTransportista: boolean = false;
+    verCrearTransporte: boolean = false;
+    verCrearCuenta: boolean = false;
+    verIngresoGarita: boolean = false;
+    verInactivarTransportista: boolean = false;
     verQR: boolean = false;
     currentUser: any;
     esTrasportista: boolean = false;
     esAgricultor: boolean = false;
     esPesoCabal: boolean = false;
+    esBeneficio: boolean = false;
 
   constructor(private GestorService:GestorService) { }
 
@@ -92,7 +97,11 @@ export class GestorComponentComponent implements OnInit {
     this.verRegistro= true;
     this.verOpciones= false;
     this.verLogin= false;
-
+    this.verCrearCuenta= false;
+    this.verCrearTransporte= false;
+    this.verCrearTransportista= false;
+    this.verIngresoGarita= false;
+    this.verInactivarTransportista= false;
 
   }
 
@@ -100,8 +109,50 @@ export class GestorComponentComponent implements OnInit {
   onVerCrearTransportista(){
     console.log("Crear Transportista")
     this.verCrearTransportista= true;
+    this.verCrearTransporte= false;
     this.verLogin= false;
+    this.verCrearCuenta= false;
+    this.verIngresoGarita= false;
+    this.verInactivarTransportista= false;
 
+  }
+  onVerCrearTransporte(){
+    console.log("Crear Transporte")
+    this.verCrearTransporte= true;
+    this.verCrearTransportista= false;
+    this.verLogin= false;
+    this.verCrearCuenta= false;
+    this.verIngresoGarita= false;
+    this.verInactivarTransportista= false;
+  }
+  onVerCrearCuenta(){
+    console.log("Crear Cuenta")
+    this.verCrearCuenta= true;
+    this.verCrearTransporte= false;
+    this.verCrearTransportista= false;
+    this.verLogin= false;
+    this.verIngresoGarita= false;
+    this.verInactivarTransportista= false;
+  }
+  onVerIngresoGarita(){
+    console.log("Ingreso a Garita")
+    this.verIngresoGarita= true;
+    this.verCrearCuenta= false;
+    this.verCrearTransporte= false;
+    this.verCrearTransportista= false;
+    this.verLogin= false;
+    this.verInactivarTransportista= false;
+
+  }
+
+  onVerInactivarTransportista(){
+    console.log("Inactivar Transportista")
+    this.verInactivarTransportista= true;
+    this.verIngresoGarita= false;
+    this.verCrearCuenta= false;
+    this.verCrearTransporte= false;
+    this.verCrearTransportista= false;
+    this.verLogin= false;
   }
 
   //ver QR
@@ -127,6 +178,7 @@ export class GestorComponentComponent implements OnInit {
       this.esPesoCabal=true;
       this.verOpciones= true;
       this.verLogin= false;
+      this.esBeneficio=true;
     }else if(rol=="ROLE_AGRICULTOR"){
       this.esAgricultor=true;
       this.verOpciones= true;
@@ -136,6 +188,9 @@ export class GestorComponentComponent implements OnInit {
 
     }else if(rol=="ROL_PESOCABAL"){
       this.esPesoCabal=true;
+    }
+    else if(rol=="ROLE_USER"){
+      this.esBeneficio=true;
     }
   }
 

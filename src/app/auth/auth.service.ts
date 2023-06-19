@@ -36,4 +36,11 @@ export class AuthService {
     localStorage.removeItem('rol');
   }
 
+  setUsuario(usuario: string): void {
+    localStorage.setItem('usuario', usuario);
+  }
+  getUsuario(): string {
+    return <string>localStorage.getItem('usuario');
+  }
+
 }

@@ -69,6 +69,8 @@ export class LoginFormComponent implements OnInit {
         this.Auth.setToken(response.token);
         //Guarda el usuario en el local storage
         this.Auth.setAuthorities(response.authorities);
+        //Guarda el usuario en el local storage
+        this.Auth.setUsuario(this.usuario);
         this.GestorService.DataUsuario=response;
         //Emite loginsuccess
         this.loginSuccess.emit();

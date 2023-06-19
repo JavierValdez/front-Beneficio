@@ -3,26 +3,23 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GestorService } from 'src/app/services/gestor.service';
 import Swal from 'sweetalert2';
 @Component({
-  selector: 'app-crear-trasporte',
-  templateUrl: './crear-trasporte.component.html',
-  styleUrls: ['./crear-trasporte.component.css']
+  selector: 'app-crear-cuenta',
+  templateUrl: './crear-cuenta.component.html',
+  styleUrls: ['./crear-cuenta.component.css']
 })
-export class CrearTrasporteComponent implements OnInit {
+export class CrearCuentaComponent implements OnInit {
 
-  formulario: FormGroup | any;
+  formulario: FormGroup | any ;
   enviado = false;
 
-  constructor(private formBuilder: FormBuilder,private gestorService: GestorService ) { }
+  constructor(private formBuilder: FormBuilder, private gestorService:GestorService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.formulario = this.formBuilder.group({
-      color: ['', Validators.required],
-      marca: ['', Validators.required],
-      matricula: ['', Validators.required],
-      modelo: ['', Validators.required],
-      numero_ejes: ['', Validators.required],
-      peso_de_camion: ['', Validators.required],
-      usuario_creo: ['', Validators.required]
+      matriculas_autorizadas: ['', Validators.required],
+      numero_parcialidades: ['', Validators.required],
+      peso_total_de_envio: ['', Validators.required],
+      usuario_agricultor: ['', Validators.required]
     });
   }
 
@@ -31,7 +28,7 @@ export class CrearTrasporteComponent implements OnInit {
     console.log(this.formulario);
     console.log(this.formulario.value);
     //setea el valor de usuario_creo
-    this.formulario.controls['usuario_creo'].setValue(localStorage.getItem('usuario'));
+    this.formulario.controls['usuario_agricultor'].setValue(localStorage.getItem('usuario'));
     console.log("enviado")
     if (this.formulario.invalid) {
       return;
@@ -39,7 +36,7 @@ export class CrearTrasporteComponent implements OnInit {
     console.log(this.formulario.value);
     //envio de datos a gestor service
 
-    this.gestorService.postTransporte(this.formulario.value).subscribe((respuesta: any) => {
+    this.gestorService.postCuenta(this.formulario.value).subscribe((respuesta: any) => {
       console.log(respuesta);
       //Alerta de confirmacion
       Swal.fire({
