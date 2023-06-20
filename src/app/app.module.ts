@@ -25,6 +25,7 @@ import { CrearTrasporteComponent } from './components/crear-trasporte/crear-tras
 import { CrearCuentaComponent } from './components/crear-cuenta/crear-cuenta.component';
 import { IngresoGaritaComponent } from './components/ingreso-garita/ingreso-garita.component';
 import { InactivarTrasportistaComponent } from './components/inactivar-trasportista/inactivar-trasportista.component';
+import { RegistrarParcialidadComponent } from './components/registrar-parcialidad/registrar-parcialidad.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { InactivarTrasportistaComponent } from './components/inactivar-trasporti
     CrearTrasporteComponent,
     CrearCuentaComponent,
     IngresoGaritaComponent,
-    InactivarTrasportistaComponent
+    InactivarTrasportistaComponent,
+    RegistrarParcialidadComponent
   ],
   imports: [
     BrowserModule,

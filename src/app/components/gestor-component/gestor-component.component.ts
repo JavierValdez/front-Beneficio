@@ -27,6 +27,7 @@ export class GestorComponentComponent implements OnInit {
     verCrearCuenta: boolean = false;
     verIngresoGarita: boolean = false;
     verInactivarTransportista: boolean = false;
+    verRegistrarParcialidad: boolean = false;
     verQR: boolean = false;
     currentUser: any;
     esTrasportista: boolean = false;
@@ -34,6 +35,9 @@ export class GestorComponentComponent implements OnInit {
     esPesoCabal: boolean = false;
     esBeneficio: boolean = false;
 
+
+
+    numero_licencia: any;
   constructor(private GestorService:GestorService) { }
 
   ngOnInit(): void {
@@ -56,6 +60,8 @@ export class GestorComponentComponent implements OnInit {
     this.validarRol();
     //
   }
+
+
   //Cerrar sesion
   cerrarSesion(){
     //Mensaje que pregunta si esta seguro de cerrar sesion
@@ -102,6 +108,8 @@ export class GestorComponentComponent implements OnInit {
     this.verCrearTransportista= false;
     this.verIngresoGarita= false;
     this.verInactivarTransportista= false;
+    this.verRegistrarParcialidad= false;
+    this.verQR= false;
 
   }
 
@@ -114,6 +122,8 @@ export class GestorComponentComponent implements OnInit {
     this.verCrearCuenta= false;
     this.verIngresoGarita= false;
     this.verInactivarTransportista= false;
+    this.verRegistrarParcialidad= false;
+    this.verQR= false;
 
   }
   onVerCrearTransporte(){
@@ -124,6 +134,8 @@ export class GestorComponentComponent implements OnInit {
     this.verCrearCuenta= false;
     this.verIngresoGarita= false;
     this.verInactivarTransportista= false;
+    this.verRegistrarParcialidad= false;
+    this.verQR= false;
   }
   onVerCrearCuenta(){
     console.log("Crear Cuenta")
@@ -133,6 +145,8 @@ export class GestorComponentComponent implements OnInit {
     this.verLogin= false;
     this.verIngresoGarita= false;
     this.verInactivarTransportista= false;
+    this.verRegistrarParcialidad= false;
+    this.verQR= false;
   }
   onVerIngresoGarita(){
     console.log("Ingreso a Garita")
@@ -142,8 +156,22 @@ export class GestorComponentComponent implements OnInit {
     this.verCrearTransportista= false;
     this.verLogin= false;
     this.verInactivarTransportista= false;
+    this.verRegistrarParcialidad= false;
+    this.verQR= false;
 
   }
+  onVerRegistrarParcialidad(){
+    console.log("Registrar Parcialidad")
+    this.verRegistrarParcialidad= true;
+    this.verIngresoGarita= false;
+    this.verCrearCuenta= false;
+    this.verCrearTransporte= false;
+    this.verCrearTransportista= false;
+    this.verLogin= false;
+    this.verInactivarTransportista= false;
+    this.verQR= false;
+  }
+
 
   onVerInactivarTransportista(){
     console.log("Inactivar Transportista")
@@ -153,15 +181,25 @@ export class GestorComponentComponent implements OnInit {
     this.verCrearTransporte= false;
     this.verCrearTransportista= false;
     this.verLogin= false;
+    this.verRegistrarParcialidad= false;
+    this.verQR= false;
   }
 
   //ver QR
-  onVerQR(){
-    if( this.currentUser.numero_licencia!=null){
+  onVerQR(event: any){
+    this.numero_licencia = event;
+    console.log("Numero de licencia",this.numero_licencia)
+    if( this.numero_licencia!=null){
     console.log("Ver QR")
     this.verQR= true;
     this.verLogin= false;
     this.verOpciones= true;
+    this.verCrearTransportista= false;
+    this.verCrearTransporte= false;
+    this.verCrearCuenta= false;
+    this.verIngresoGarita= false;
+    this.verInactivarTransportista= false;
+    this.verRegistrarParcialidad= false;
     }
   }
 
@@ -188,9 +226,20 @@ export class GestorComponentComponent implements OnInit {
 
     }else if(rol=="ROL_PESOCABAL"){
       this.esPesoCabal=true;
+      this.verOpciones= true;
+      this.verLogin= false;
+      this.esAgricultor=false;
+      this.esTrasportista=false;
+
     }
     else if(rol=="ROLE_USER"){
       this.esBeneficio=true;
+      this.verOpciones= true;
+      this.verLogin= false;
+      this.esAgricultor=false;
+      this.esTrasportista=false;
+      this.esPesoCabal=false;
+
     }
   }
 

@@ -32,8 +32,8 @@ export class GestorService {
     return this.DataService.crearTransportista(json);
   }
   //getTransportista
-  public getTransportista (){
-    return <any> this.DataService.getTransportista();
+  public getTransportista (a:string){
+    return <any> this.DataService.getTransportista(a);
   }
   //Login
   public Login(usuario:string, contrasena:string){
@@ -57,6 +57,9 @@ export class GestorService {
   //Eliminar transportista
   public inactivarTransportista(json:any){
     return <any> this.DataService.inactivarTransportista(json);
+  }
+  public registrarParcialidad (json:any){
+    return <any> this.DataService.registrarParcialidad(json);
   }
 
 

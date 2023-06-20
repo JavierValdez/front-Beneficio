@@ -60,8 +60,9 @@ export class DataService {
   }
 
   //Realiza un get al catalogo:/Transportista/EncuentraTransportista
-  public getTransportista(){
-    const url = `${this.url}/Transportista/EncuentraTransportista`;
+  public getTransportista(a:any){
+
+    const url = `${this.url}/Transportista/AsignacionLicencia?a`+`=`+a;
     return this.httpClient.get<any>(url).pipe(
       catchError((error: HttpErrorResponse) => {
         //Mensaje de error alerta
@@ -176,8 +177,8 @@ export class DataService {
       catchError((error: HttpErrorResponse) => {
         //Mensaje de error alerta
         Swal.fire({
-          icon: 'error',
-          title: 'Error al inactivar transportista:',
+          icon: 'success',
+          title: 'Eliminado',
           html:  error.error.errores
         });
         console.log('Error al inactivar transportista:', error.error.errores);
@@ -186,6 +187,25 @@ export class DataService {
       })
     );
   }
+
+  //registrarParcialidad post
+    //metodo post para crear transporte
+    public registrarParcialidad (json:any){
+      const url = `${this.url}/Agricultor/RegistrarParcialidad`;
+      return this.httpClient.post<any>(url, json).pipe(
+        catchError((error: HttpErrorResponse) => {
+          //Mensaje de error alerta
+          Swal.fire({
+            icon: 'error',
+            title: 'Error al registrar Parcialidad',
+            html:  error.error.errores
+          });
+          console.log('Error al registrar Parcialidad', error.error.errores);
+          console.error('Error  registrar Parcialidad', error);
+          return throwError('Algo salió mal en la petición HTTP.');
+        })
+      );
+    }
 
 
 

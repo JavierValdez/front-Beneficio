@@ -3,11 +3,12 @@
     <ul *ngIf="verOpciones">
 
       <li *ngIf="esAgricultor"><a [style.color]="color1" (click)="onVerCrearTransportista()">{{ opcion2 }}</a></li>
-      <li *ngIf="esTrasportista"><a [style.color]="color3" (click)="onVerCrearTransporte()">{{ opcion3 }}</a></li>
-      <li *ngIf="esTrasportista"><a [style.color]="color4" (click)="onVerCrearCuenta()">Crear Cuenta</a></li>
-      <li *ngIf="esPesoCabal"><a [style.color]="color1" (click)="onVerIngresoGarita()">Ingreso Garita</a></li>
+      <li *ngIf="esAgricultor"><a [style.color]="color3" (click)="onVerCrearTransporte()">{{ opcion3 }}</a></li>
+      <li *ngIf="esAgricultor"><a [style.color]="color4" (click)="onVerCrearCuenta()">Crear Cuenta</a></li>
+      <li *ngIf="esBeneficio"><a [style.color]="color1" (click)="onVerIngresoGarita()">Ingreso Garita</a></li>
       <li *ngIf="esBeneficio"><a [style.color]="color1" (click)="onVerInactivarTransportista()">Inactivar Transportista</a></li>
-      <li *ngIf="esTrasportista"><a [style.color]="color4" (click)="onVerQR()">{{ opcion4 }}</a></li>
+      <li *ngIf="esAgricultor"><a [style.color]="color1" (click)="onVerRegistrarParcialidad()">Registrar Parcialidad</a></li>
+      <!--<li *ngIf="esTrasportista"><a [style.color]="color4" (click)="onVerQR($event)">{{ opcion4 }}</a></li>-->
       <li><a [style.color]="color5" (click)="cerrarSesion()">{{ opcion5 }}</a></li>
     </ul>
   </nav>
@@ -15,6 +16,7 @@
     <h1 style="color: #8C3F00; font-size: 28px; font-weight: bold;">¡Bienvenido a nuestro beneficio cafetalero!</h1>
   </div>
   <app-ingreso-garita *ngIf="verIngresoGarita"></app-ingreso-garita>
+  <app-registrar-parcialidad *ngIf="verRegistrarParcialidad"></app-registrar-parcialidad>
   <app-crear-cuenta *ngIf="verCrearCuenta"> </app-crear-cuenta>
   <app-crear-trasporte *ngIf="verCrearTransporte"> </app-crear-trasporte>
   <app-inactivar-trasportista *ngIf="verInactivarTransportista"></app-inactivar-trasportista>
@@ -23,9 +25,9 @@
 
 
   <app-registro-beneficio *ngIf="verRegistro"></app-registro-beneficio>
-  <app-crear-trasportista (closeComponent)="usuarioLogueado();" *ngIf="verCrearTransportista"></app-crear-trasportista>
+  <app-crear-trasportista (closeComponent)="onVerQR($event);" *ngIf="verCrearTransportista"></app-crear-trasportista>
 
   <div style="width: 100%;display: flex; flex-direction: column; justify-content: center; align-items: center;">
-    <app-qrcode *ngIf="verQR" [qrdatos]="this.currentUser.numero_licencia"></app-qrcode>
+    <app-qrcode *ngIf="verQR" [qrdatos]="numero_licencia"></app-qrcode>
   </div>
 </div>

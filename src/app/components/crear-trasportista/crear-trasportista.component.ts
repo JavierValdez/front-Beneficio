@@ -23,6 +23,7 @@ export class CrearTrasportistaComponent implements OnInit {
   //Emite cierre de ventana
   @Output()
   closeComponent = new EventEmitter<any>();
+verQR: boolean = false;
 
 
   constructor(private gestorService: GestorService) { }
@@ -52,7 +53,8 @@ export class CrearTrasportistaComponent implements OnInit {
           "numero_licencia": this.numero_licencia,
           "tipo_licencia": this.tipo_licencia,
           // "imagen": this.imagenBase64,
-          'usuario': localStorage.getItem('usuario')
+          'usuario': localStorage.getItem('usuario'),
+          'foto': this.imagenBase64
         }
 
         console.log("Json a enviar");
@@ -81,7 +83,7 @@ export class CrearTrasportistaComponent implements OnInit {
                   text: data.resultado
                 }).then((result) => {
                   if (result.isConfirmed) {
-                    this.closeComponent.emit();
+                    this.closeComponent.emit(this.numero_licencia);
                   }
                 }
                 );

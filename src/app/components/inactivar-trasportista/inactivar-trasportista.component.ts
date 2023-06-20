@@ -36,9 +36,11 @@ export class InactivarTrasportistaComponent implements OnInit {
         confirmButtonText: 'Aceptar'
       });
       //reinicio de formulario
-      this.listarTransportistas();
+
       // hacer algo con la respuesta
     });
+    //remover de licencias licencia
+    this.licencias = this.licencias.filter((licencia: any) => licencia.numero_licencia != licencia.numero_licencia);
 
     // Lógica para inactivar el transportista
   }

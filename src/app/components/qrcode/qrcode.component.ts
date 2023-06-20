@@ -11,7 +11,7 @@ export class QRCODEComponent implements OnInit {
   constructor() { }
   qrdata:any;
   ngOnInit(): void {
-    this.qrdata = 'https://cafetalito-3af53.web.app/Consulta/'+this.qrdatos+'/123332';
+    this.qrdata = 'https://cafetalito-3af53.web.app/Consulta/'+this.qrdatos;
   }
   abrirPaginaWeb() {
     window.open(this.qrdata, '_blank');
