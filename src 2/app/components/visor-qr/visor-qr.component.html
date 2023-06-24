@@ -1,0 +1,37 @@
+<div class="container">
+  <!-- Elimina este comentario
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Transporte</h2>
+          <p><strong>Matrícula:</strong> {{ transport.matricula }}</p>
+          <p><strong>Marca:</strong> {{ transport.marca }}</p>
+          <p><strong>Modelo:</strong> {{ transport.modelo }}</p>
+          <p><strong>Color:</strong> {{ transport.color }}</p>
+          <p><strong>Número de ejes:</strong> {{ transport.numero_ejes }}</p>
+          <p><strong>Peso de camión:</strong> {{ transport.peso_de_camion }}</p>
+          <p><strong>Peso de mercadería:</strong> {{ transport.peso_de_mercaderia }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  -->
+  <hr>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body text-center">
+          <h2 class="card-title">Transportista</h2>
+          <img class="custom-image" [src]="'data:image/png;base64,' + this.transportista.foto" alt="Imagen de perfil">
+          <p><strong>Nombres:</strong> {{ this.transportista.nombres }}</p>
+          <p><strong>Apellidos:</strong> {{ this.transportista.apellidos }}</p>
+          <p><strong>Número de licencia:</strong> {{ this.transportista.numero_licencia }}</p>
+          <p><strong>Tipo de licencia:</strong> {{ this.transportista.tipo_licencia }}</p>
+          <p><strong>Estado:</strong> {{ this.transportista.estado }}</p>
+          <p><strong>Fecha de inscripción:</strong> {{ this.transportista.fecha_inscripcion }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -46,8 +46,17 @@ export class LoginFormComponent implements OnInit {
      //Datos a enviar
       console.log("Login ");
      console.log("Datos a enviar"+this.usuario, this.password);
+     try{
+      Swal.fire({
+        title: 'Espere',
+        text: 'Iniciando sesión',
+        icon: 'info',
+        allowOutsideClick: false
+      });
+      Swal.showLoading();
      this.GestorService.Login(this.usuario, this.password).subscribe(
       (response: any) => {
+        Swal.close();
         //Mensaje de error si recibe Usuario o contraseña incorrectos
         if (response.error=="Usuario o contraseña incorrectos") {
           Swal.fire({
@@ -77,6 +86,15 @@ export class LoginFormComponent implements OnInit {
       }
       }
     );
+  }catch(error){
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Error al iniciar sesión:',
+      html:  'Error'
+    });
+
+  }
   }
 
 

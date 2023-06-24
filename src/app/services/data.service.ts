@@ -93,9 +93,9 @@ export class DataService {
         Swal.fire({
           icon: 'error',
           title: 'Error al iniciar sesión:',
-          html:  error.error.errores
+          html: 'Datos Incorrectos'
         });
-        console.log('Error al iniciar sesión:', error.error.errores);
+       // console.log('Error al iniciar sesión:', error.error.errores);
         console.error('Error al iniciar sesión:', error);
         return throwError('Algo salió mal en la petición HTTP.');
       }
@@ -127,11 +127,11 @@ export class DataService {
         //Mensaje de error alerta
         Swal.fire({
           icon: 'error',
-          title: 'Error al crear transporte:',
+          title: 'Error al crear cuenta:',
           html:  error.error.errores
         });
-        console.log('Error al crear transporte:', error.error.errores);
-        console.error('Error al crear transporte:', error);
+        console.log('Error al crear cuenta:', error.error.errores);
+        console.error('Error al crear cuenta:', error);
         return throwError('Algo salió mal en la petición HTTP.');
       })
     );
@@ -206,6 +206,79 @@ export class DataService {
         })
       );
     }
+
+    //pesajePesoCabal/createPesaje
+   public registrarPesaje (json:any){
+      console.log('Datos a enviar'+JSON.stringify( json));
+      const url = `${this.url}/pesajePesoCabal/createPesaje`;
+      return this.httpClient.post<any>(url, json).pipe(
+        catchError((error: HttpErrorResponse) => {
+          //Mensaje de error alerta
+          Swal.fire({
+            icon: 'error',
+            title: 'Error al registrar Pesaje',
+            html:  error.error.errores
+          });
+          console.log('Error al registrar Pesaje', error.error.errores);
+          console.error('Error  registrar Pesaje', error);
+          return throwError('Algo salió mal en la petición HTTP.');
+        })
+      );
+    }
+
+    //pesajePesoCabal/consultaSumatoria
+    public consultaSumatoria (json:any){
+      console.log('Datos a enviar'+JSON.stringify( json));
+      const url = `${this.url}/pesajePesoCabal/consultaSumatoria`;
+      return this.httpClient.post<any>(url, json).pipe(
+        catchError((error: HttpErrorResponse) => {
+          //Mensaje de error alerta
+          Swal.fire({
+            icon: 'error',
+            title: 'Error al registrar Pesaje',
+            html:  error.error.errores
+          });
+          console.log('Error al registrar Pesaje', error.error.errores);
+          console.error('Error  registrar Pesaje', error);
+          return throwError('Algo salió mal en la petición HTTP.');
+        })
+      );
+    }
+
+    //pesajePesoCabal/consultaEstado
+    public consultaEstado (json:any){
+      console.log('Datos a enviar'+JSON.stringify( json));
+      const url = `${this.url}/pesajePesoCabal/consultaEstado`;
+      return this.httpClient.post<any>(url, json).pipe(
+        catchError((error: HttpErrorResponse) => {
+          //Mensaje de error alerta
+          console.log('Error al registrar Pesaje', error.error.errores);
+          console.error('Error  registrar Pesaje', error);
+          return throwError('Algo salió mal en la petición HTTP.');
+        })
+      );
+    }
+
+    //Obtiene listado de Cuenta/ListadoCuentas
+    public listadoCuentas (json:any){
+      console.log('Datos a enviar'+JSON.stringify( json));
+      const url = `${this.url}/Cuenta/ListadoCuentas?a=Agricultor`;
+      return this.httpClient.post<any>(url, {}).pipe(
+        catchError((error: HttpErrorResponse) => {
+          //Mensaje de error alerta
+          console.log('Error al registrar ', error);
+
+          return throwError('Algo salió mal en la petición HTTP.');
+        })
+      );
+    }
+
+
+
+
+
+
+
 
 
 

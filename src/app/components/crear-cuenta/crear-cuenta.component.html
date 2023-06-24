@@ -5,28 +5,29 @@
     </div>
     <div class="card-body">
       <form [formGroup]="formulario" (ngSubmit)="enviar()">
+
         <div class="form-group">
           <label>Matrículas autorizadas:</label>
           <input type="text" class="form-control" formControlName="matriculas_autorizadas">
-          <div *ngIf="enviado && formulario.controls.matriculas_autorizadas.errors" class="text-danger">
+          <!-- <div *ngIf="enviado && formulario.controls.matriculas_autorizadas.errors" class="text-danger">
             {{ formulario.controls.matriculas_autorizadas.errors.required ? 'Las matrículas autorizadas son obligatorias' : '' }}
-          </div>
+          </div> -->
         </div>
 
         <div class="form-group">
           <label>Número de parcialidades:</label>
           <input type="number" class="form-control" formControlName="numero_parcialidades">
-          <div *ngIf="enviado && formulario.controls.numero_parcialidades.errors" class="text-danger">
+          <!-- <div *ngIf="enviado && formulario.controls.numero_parcialidades.errors" class="text-danger">
             {{ formulario.controls.numero_parcialidades.errors.required ? 'El número de parcialidades es obligatorio' : '' }}
-          </div>
+          </div> -->
         </div>
 
         <div class="form-group">
           <label>Peso total de envío:</label>
           <input type="number" class="form-control" formControlName="peso_total_de_envio">
-          <div *ngIf="enviado && formulario.controls.peso_total_de_envio.errors" class="text-danger">
+          <!-- <div *ngIf="enviado && formulario.controls.peso_total_de_envio.errors" class="text-danger">
             {{ formulario.controls.peso_total_de_envio.errors.required ? 'El peso total de envío es obligatorio' : '' }}
-          </div>
+          </div> -->
         </div>
 
 

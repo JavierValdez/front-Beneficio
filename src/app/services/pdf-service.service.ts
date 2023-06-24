@@ -8,14 +8,14 @@ import html2canvas from 'html2canvas';
 export class PdfServiceService {
 
   constructor() { }
-  generatePdf(title: string, content: string) {
+  generatePdf(content: string) {
     let doc = new jsPDF();
     //doc posicion inicial
     const htmlContent=content;
     doc.html(content
       , {
         callback: (doc) => {
-          doc.save('document.pdf');
+          doc.save('Pesaje.pdf');
         }
       });
   }

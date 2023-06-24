@@ -28,12 +28,15 @@ export class GestorComponentComponent implements OnInit {
     verIngresoGarita: boolean = false;
     verInactivarTransportista: boolean = false;
     verRegistrarParcialidad: boolean = false;
+    verListado: boolean = false;
     verQR: boolean = false;
+    verPesoCabal: boolean = false;
     currentUser: any;
     esTrasportista: boolean = false;
     esAgricultor: boolean = false;
     esPesoCabal: boolean = false;
     esBeneficio: boolean = false;
+
 
 
 
@@ -82,20 +85,40 @@ export class GestorComponentComponent implements OnInit {
           text: 'Has cerrado sesión correctamente',
         })
         //Borrar token de localStorage
-        localStorage.removeItem('token');
+        localStorage.clear();
+
         //Ocultar opciones
         this.verOpciones= false;
         //Mostrar login
-        this.verLogin= true;
-
-
+        this.verLoginn();
       } else if (result.isDenied) {
         Swal.fire('No se ha cerrado sesión', '', 'info')
       }
     }
     )
-
   }
+
+verLoginn(){
+  console.log("Registro de login")
+  this.esAgricultor=false;
+  this.esTrasportista=false;
+  this.esPesoCabal=false;
+  this.esBeneficio=false;
+  this.verRegistro= false;
+  this.verOpciones= false;
+  this.verLogin= true;
+  this.verCrearCuenta= false;
+  this.verCrearTransporte= false;
+  this.verCrearTransportista= false;
+  this.verIngresoGarita= false;
+  this.verInactivarTransportista= false;
+  this.verRegistrarParcialidad= false;
+  this.verQR= false;
+  this.verPesoCabal= false;
+  this.verListado= false;
+
+}
+
 
   //Ver Registro de Beneficio
   verRegistroBeneficio(){
@@ -110,6 +133,8 @@ export class GestorComponentComponent implements OnInit {
     this.verInactivarTransportista= false;
     this.verRegistrarParcialidad= false;
     this.verQR= false;
+    this.verPesoCabal= false;
+    this.verListado= false;
 
   }
 
@@ -124,6 +149,8 @@ export class GestorComponentComponent implements OnInit {
     this.verInactivarTransportista= false;
     this.verRegistrarParcialidad= false;
     this.verQR= false;
+    this.verPesoCabal= false;
+    this.verListado= false;
 
   }
   onVerCrearTransporte(){
@@ -136,6 +163,8 @@ export class GestorComponentComponent implements OnInit {
     this.verInactivarTransportista= false;
     this.verRegistrarParcialidad= false;
     this.verQR= false;
+    this.verPesoCabal= false;
+    this.verListado= false;
   }
   onVerCrearCuenta(){
     console.log("Crear Cuenta")
@@ -147,6 +176,9 @@ export class GestorComponentComponent implements OnInit {
     this.verInactivarTransportista= false;
     this.verRegistrarParcialidad= false;
     this.verQR= false;
+    this.verPesoCabal= false;
+    this.verListado= false;
+
   }
   onVerIngresoGarita(){
     console.log("Ingreso a Garita")
@@ -158,6 +190,8 @@ export class GestorComponentComponent implements OnInit {
     this.verInactivarTransportista= false;
     this.verRegistrarParcialidad= false;
     this.verQR= false;
+    this.verPesoCabal= false;
+    this.verListado= false;
 
   }
   onVerRegistrarParcialidad(){
@@ -170,6 +204,8 @@ export class GestorComponentComponent implements OnInit {
     this.verLogin= false;
     this.verInactivarTransportista= false;
     this.verQR= false;
+    this.verPesoCabal= false;
+    this.verListado= false;
   }
 
 
@@ -183,6 +219,8 @@ export class GestorComponentComponent implements OnInit {
     this.verLogin= false;
     this.verRegistrarParcialidad= false;
     this.verQR= false;
+    this.verPesoCabal= false;
+    this.verListado= false;
   }
 
   //ver QR
@@ -200,12 +238,44 @@ export class GestorComponentComponent implements OnInit {
     this.verIngresoGarita= false;
     this.verInactivarTransportista= false;
     this.verRegistrarParcialidad= false;
+    this.verPesoCabal= false;
+    this.verListado= false;
     }
+
+  }
+  onVerPesoCabal(){
+    console.log("Peso Cabal")
+    this.verPesoCabal= true;
+    this.verQR= false;
+    this.verLogin= false;
+    this.verOpciones= true;
+    this.verCrearTransportista= false;
+    this.verCrearTransporte= false;
+    this.verCrearCuenta= false;
+    this.verIngresoGarita= false;
+    this.verInactivarTransportista= false;
+    this.verRegistrarParcialidad= false;
+    this.verListado= false;
+  }
+
+  onVerListado(){
+    console.log("Listado")
+    this.verListado= true;
+    this.verPesoCabal= false;
+    this.verQR= false;
+    this.verLogin= false;
+    this.verOpciones= true;
+    this.verCrearTransportista= false;
+    this.verCrearTransporte= false;
+    this.verCrearCuenta= false;
+    this.verIngresoGarita= false;
+    this.verInactivarTransportista= false;
+    this.verRegistrarParcialidad= false;
+
   }
 
   //valida el rol del usuario
   validarRol(){
-
     console.log("Validar rol")
     console.log(localStorage.getItem('rol'))
     let rol = localStorage.getItem('rol');
@@ -218,6 +288,7 @@ export class GestorComponentComponent implements OnInit {
       this.verLogin= false;
       this.esBeneficio=true;
     }else if(rol=="ROLE_AGRICULTOR"){
+      console.log("Es agricultor")
       this.esAgricultor=true;
       this.verOpciones= true;
       this.verLogin= false;
@@ -225,14 +296,15 @@ export class GestorComponentComponent implements OnInit {
       this.esTrasportista=false;
 
     }else if(rol=="ROL_PESOCABAL"){
+      console.log("Es pesoCabal")
       this.esPesoCabal=true;
       this.verOpciones= true;
       this.verLogin= false;
       this.esAgricultor=false;
       this.esTrasportista=false;
-
     }
     else if(rol=="ROLE_USER"){
+      console.log("Es usuario")
       this.esBeneficio=true;
       this.verOpciones= true;
       this.verLogin= false;

@@ -26,6 +26,8 @@ import { CrearCuentaComponent } from './components/crear-cuenta/crear-cuenta.com
 import { IngresoGaritaComponent } from './components/ingreso-garita/ingreso-garita.component';
 import { InactivarTrasportistaComponent } from './components/inactivar-trasportista/inactivar-trasportista.component';
 import { RegistrarParcialidadComponent } from './components/registrar-parcialidad/registrar-parcialidad.component';
+import { PesoCabalComponent } from './components/peso-cabal/peso-cabal.component';
+import { ListadoCuentasComponent } from './components/listado-cuentas/listado-cuentas.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { RegistrarParcialidadComponent } from './components/registrar-parcialida
     CrearCuentaComponent,
     IngresoGaritaComponent,
     InactivarTrasportistaComponent,
-    RegistrarParcialidadComponent
+    RegistrarParcialidadComponent,
+    PesoCabalComponent,
+    ListadoCuentasComponent
   ],
   imports: [
     BrowserModule,

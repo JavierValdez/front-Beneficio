@@ -61,6 +61,25 @@ export class GestorService {
   public registrarParcialidad (json:any){
     return <any> this.DataService.registrarParcialidad(json);
   }
+  //registrarPesaje
+  public registrarPesaje (json:any){
+    return <any> this.DataService.registrarPesaje(json);
+  }
+
+  //consultaSumatoria
+  public consultaSumatoria (json:any){
+    return <any> this.DataService.consultaSumatoria(json);
+  }
+
+  //consultaEstado
+  public consultaEstado (json:any){
+    return <any> this.DataService.consultaEstado(json);
+  }
+  public listadoCuentas(json:any){
+    return <any> this.DataService.listadoCuentas(json);
+  }
+
+
 
 
 

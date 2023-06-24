@@ -13,15 +13,17 @@ export class IngresoGaritaComponent implements OnInit {
   formulario: FormGroup | any;
   enviado = false;
 
-  constructor(private formBuilder: FormBuilder,private gestorService:GestorService ) { }
+  constructor(private formBuilder: FormBuilder, private gestorService: GestorService) { }
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
       id_cuenta: ['', Validators.required],
       id_ingreso: ['', Validators.required],
+      id_parcialidad: ['', Validators.required],
       licencia_autorizada: ['', Validators.required],
       matricula_autorizada: ['', Validators.required],
-      usuario_agricultor: ['', Validators.required]
+      usuario_agricultor: ['', Validators.required],
+      usuario_beneficio: ['', Validators.required]
     });
   }
 
@@ -30,32 +32,104 @@ export class IngresoGaritaComponent implements OnInit {
     console.log(this.formulario);
     console.log(this.formulario.value);
     //setea el valor de usuario_creo
-    this.formulario.controls['usuario_agricultor'].setValue(localStorage.getItem('usuario'));
+    this.formulario.controls['usuario_beneficio'].setValue(localStorage.getItem('usuario'));
     console.log("enviado")
-    if (this.formulario.invalid) {
-      return;
-    }
-    console.log(this.formulario.value);
-    //envio de datos a gestor service
+    var id = Math.random().toString(36).substr(2, 9);
+    this.formulario.controls['id_ingreso'].setValue(id);
+    console.log("enviado id", this.formulario.controls.id_ingreso.value)
 
-    this.gestorService.ingresoGarita(this.formulario.value).subscribe((respuesta: any) => {
-      console.log(respuesta);
-      //Alerta de confirmacion
+    if (this.formulario.controls.id_cuenta.value == '' &&
+      this.formulario.controls.id_parcialidad.value == '' &&
+      this.formulario.controls.licencia_autorizada.value == '' &&
+      this.formulario.controls.matricula_autorizada.value == '' &&
+      this.formulario.controls.usuario_agricultor.value == '' &&
+      this.formulario.controls.usuario_beneficio.value == ''
+    ) {
+
+      console.log("emtrooo")
       Swal.fire({
-        title: 'Confirmación',
-        text: respuesta.mensaje,
-        icon: 'success',
-        confirmButtonText: 'Aceptar'
+        icon: 'error',
+        title: 'Campos Vacios',
+        text: 'Debera llenar todos los campos'
+      })
+    }
+    else if (this.formulario.controls.id_cuenta.value == '') {
+      console.log('entroo');
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos Vacios',
+        text: 'Debera llenar el campo de id cuenta'
+      })
+    }
+    else if (this.formulario.controls.id_parcialidad.value == '') {
+      console.log('entroo');
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos Vacios',
+        text: 'Debera llenar el campo de id_parcialidad'
+      })
+    }
+    else if (this.formulario.controls.licencia_autorizada.value == '') {
+      console.log('entroo');
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos Vacios',
+        text: 'Debera llenar el campo de licencia autorizada'
+      })
+    }
+    else if (this.formulario.controls.matricula_autorizada.value == '') {
+      console.log('entroo');
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos Vacios',
+        text: 'Debera llenar el campo de matricula autorizada'
+      })
+    }
+    else if (this.formulario.controls.usuario_agricultor.value == '') {
+      console.log('entroo');
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos Vacios',
+        text: 'Debera llenar el campo de Usuario agricultor'
+      })
+    }
+    else if (this.formulario.controls.usuario_beneficio.value == '') {
+      console.log('entroo');
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos Vacios',
+        text: 'Debera llenar el campo de Usuario Beneficio'
+      })
+    }
+    else {
+      console.log(this.formulario.value);
+      //envio de datos a gestor service
+
+      this.gestorService.ingresoGarita(this.formulario.value).subscribe((respuesta: any) => {
+        console.log(respuesta);
+        //Alerta de confirmacion
+        Swal.fire({
+          title: 'Confirmación',
+          text: respuesta.mensaje,
+          icon: 'success',
+          confirmButtonText: 'Aceptar'
+        });
+        //reinicio de formulario
+        this.formulario.reset();
+        this.formulario.controls.id_cuenta.value == ''
+        this.formulario.controls.id_ingreso.value == ''
+        this.formulario.controls.licencia_autorizada.value == ''
+        this.formulario.controls.matricula_autorizada.value == ''
+        this.formulario.controls.usuario_agricultor.value == ''
+        this.formulario.controls.usuario_beneficio.value == ''
+        this.formulario.controls.id_parcialidad.value == ''
+
+
+        // hacer algo con la respuesta
       });
-      //reinicio de formulario
-      this.formulario.reset();
-      this.enviado = false;
+      // Lógica para enviar el formulario
+    }
 
-      // hacer algo con la respuesta
-    });
-    // Lógica para enviar el formulario
+
   }
-
-
-
 }

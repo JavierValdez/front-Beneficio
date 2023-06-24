@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 //Import gestor service
 import { GestorService } from '../../services/gestor.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-visor-qr',
   templateUrl: './visor-qr.component.html',
@@ -38,12 +38,24 @@ export class VisorQRComponent implements OnInit {
 
   //Funcion para obtener datos getTransportista
   getTransportista(){
+
+    //Ventana de espera con Sweetalert2
+    Swal.fire({
+      title: 'Espere',
+      text: 'Obteniendo datos',
+      icon: 'info',
+      allowOutsideClick: false
+    });
+    Swal.showLoading();
+
     this.gestorService.getTransportista(this.parametro1).subscribe(
       (      res: any)=>{
         console.log('Traportista'+res);
         this.transportistas=res;
 
         this.buscarTransportista();
+        //Cierre de alerta
+        Swal.close();
       }
     )
   }

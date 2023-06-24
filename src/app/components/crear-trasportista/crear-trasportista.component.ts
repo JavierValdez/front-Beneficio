@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgModel } from '@angular/forms'; // Importa NgModel para utilizar [(ngModel)]
 import { GestorService } from 'src/app/services/gestor.service';
+
 //Importaciond de swwtalert2
 import Swal from 'sweetalert2';
 @Component({
@@ -36,6 +37,51 @@ verQR: boolean = false;
     console.log("Datos del formulario");
     console.log(this.apellidos, this.nombres, this.numero_licencia, this.tipo_licencia,this.usuario);
 
+    if(this.apellidos=='' && this.nombres=='' && this.numero_licencia=='' && this.tipo_licencia=='' && this.imagenBase64==''){
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos Vacios',
+        text: 'Debera llenar todos los campos'
+      })
+   
+ 
+    }else if(this.nombres==''){
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos Vacios',
+        text: 'Debera llenar el campo de Nombre'
+      })
+
+    }else if(this.apellidos==''){
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos Vacios',
+        text: 'Debera llenar el campo de Apellido'
+      })
+    }
+    else if(this.tipo_licencia==''){
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos Vacios',
+        text: 'Debera llenar el campo de Tipo Licencia'
+      })
+    }
+    else if(this.numero_licencia==''){
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos Vacios',
+        text: 'Debera llenar el campo de Numero de licencia'
+      })
+    }
+
+
+    else{
+
+    
+
+    
     // Swal.fire({
 
 
@@ -53,7 +99,7 @@ verQR: boolean = false;
           "numero_licencia": this.numero_licencia,
           "tipo_licencia": this.tipo_licencia,
           // "imagen": this.imagenBase64,
-          'usuario': localStorage.getItem('usuario'),
+          'usuario_creo': localStorage.getItem('usuario'),
           'foto': this.imagenBase64
         }
 
@@ -100,6 +146,7 @@ verQR: boolean = false;
           });
         }
       }
+    }
   //   });
   // }
 

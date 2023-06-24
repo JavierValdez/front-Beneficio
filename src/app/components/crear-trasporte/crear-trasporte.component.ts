@@ -27,15 +27,83 @@ export class CrearTrasporteComponent implements OnInit {
   }
 
   enviar() {
+
     this.enviado = true;
     console.log(this.formulario);
     console.log(this.formulario.value);
     //setea el valor de usuario_creo
     this.formulario.controls['usuario_creo'].setValue(localStorage.getItem('usuario'));
     console.log("enviado")
-    if (this.formulario.invalid) {
-      return;
+    console.log(this.formulario.controls.peso_de_camion.value);
+
+    if(this.formulario.controls.peso_de_camion.value=='' && 
+    this.formulario.controls.numero_ejes.value=='' &&
+    this.formulario.controls.modelo.value==''&&
+    this.formulario.controls.matricula.value=='' &&
+    this.formulario.controls.marca.value=='' &&
+    this.formulario.controls.color .value==''
+     ){
+      console.log("emtrooo")
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos Vacios',
+        text: 'Debera llenar todos los campos'
+      })
+     }
+    else if (this.formulario.controls.color.value=='') {
+      console.log('entroo');
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos Vacios',
+        text: 'Debera llenar el campo de color'
+      })
     }
+      else if (this.formulario.controls.marca.value=='') {
+        console.log('entroo');
+        Swal.fire({
+          icon: 'error',
+          title: 'Campos Vacios',
+          text: 'Debera llenar el campo de marca'
+        })
+      }
+      else if (this.formulario.controls.matricula.value=='') {
+        console.log('entroo');
+        Swal.fire({
+          icon: 'error',
+          title: 'Campos Vacios',
+          text: 'Debera llenar el campo de matricula'
+        })
+      }
+      
+      else if (this.formulario.controls.modelo.value=='') {
+        console.log('entroo');
+        Swal.fire({
+          icon: 'error',
+          title: 'Campos Vacios',
+          text: 'Debera llenar el campo de modelo'
+        })
+      }
+    
+     
+      else if(this.formulario.controls.numero_ejes.value=='') {
+        console.log('entroo');
+        Swal.fire({
+          icon: 'error',
+          title: 'Campos Vacios',
+          text: 'Debera llenar el campo de numero de ejes'
+        })
+      }
+      else if (this.formulario.controls.peso_de_camion.value=='') {
+        console.log('entroo');
+        Swal.fire({
+          icon: 'error',
+          title: 'Campos Vacios',
+          text: 'Debera llenar el campo de peso'
+        })
+      }
+
+    else{
+    
     console.log(this.formulario.value);
     //envio de datos a gestor service
 
@@ -50,10 +118,16 @@ export class CrearTrasporteComponent implements OnInit {
       });
       //reinicio de formulario
       this.formulario.reset();
+      this.formulario.controls.peso_de_camion.value='';
+    this.formulario.controls.numero_ejes.value='';
+    this.formulario.controls.modelo.value='';
+    this.formulario.controls.matricula.value='';
+    this.formulario.controls.marca.value='';
+    this.formulario.controls.color .value='';
       this.enviado = false;
 
       // hacer algo con la respuesta
     });
   }
-
+  }
 }

@@ -1,60 +1,57 @@
 <div class=" container" style=" display: flex; justify-content: center;">
   <div class="card " style="max-width: 40vw; width: 30vw; margin-top: 0;">
     <div class="card-header">
-      <h5 class="card-title">Crear Transporte</h5>
+      <h5 class="card-title">Crear Transportess</h5>
     </div>
     <div class="card-body">
       <form [formGroup]="formulario" (ngSubmit)="enviar()">
         <div class="form-group">
           <label>Color:</label>
           <input type="text" class="form-control" formControlName="color">
-          <div *ngIf="enviado && formulario.controls.color.errors" class="text-danger">
+          <!-- <div *ngIf="enviado && formulario.controls.color.errors" class="text-danger">
             {{ formulario.controls.color.errors.required ? 'El color es obligatorio' : '' }}
-          </div>
+          </div> -->
         </div>
 
         <div class="form-group">
           <label>Marca:</label>
           <input type="text" class="form-control" formControlName="marca">
-          <div *ngIf="enviado && formulario.controls.marca.errors" class="text-danger">
+          <!-- <div *ngIf="enviado && formulario.controls.marca.errors" class="text-danger">
             {{ formulario.controls.marca.errors.required ? 'La marca es obligatoria' : '' }}
-          </div>
+          </div> -->
         </div>
 
         <div class="form-group">
           <label>Matrícula:</label>
           <input type="text" class="form-control" formControlName="matricula">
-          <div *ngIf="enviado && formulario.controls.matricula.errors" class="text-danger">
+          <!-- <div *ngIf="enviado && formulario.controls.matricula.errors" class="text-danger">
             {{ formulario.controls.matricula.errors.required ? 'La matrícula es obligatoria' : '' }}
-          </div>
+          </div> -->
         </div>
 
         <div class="form-group">
           <label>Modelo:</label>
           <input type="number" class="form-control" formControlName="modelo">
-          <div *ngIf="enviado && formulario.controls.modelo.errors" class="text-danger">
+          <!-- <div *ngIf="enviado && formulario.controls.modelo.errors" class="text-danger">
             {{ formulario.controls.modelo.errors.required ? 'El modelo es obligatorio' : '' }}
-          </div>
+          </div> -->
         </div>
 
         <div class="form-group">
           <label>Número de ejes:</label>
           <input type="text" class="form-control" formControlName="numero_ejes">
-          <div *ngIf="enviado && formulario.controls.numero_ejes.errors" class="text-danger">
+          <!-- <div *ngIf="enviado && formulario.controls.numero_ejes.errors" class="text-danger">
             {{ formulario.controls.numero_ejes.errors.required ? 'El número de ejes es obligatorio' : '' }}
-          </div>
+          </div> -->
         </div>
 
         <div class="form-group">
           <label>Peso del camión:</label>
           <input type="number" class="form-control" formControlName="peso_de_camion">
-          <div *ngIf="enviado && formulario.controls.peso_de_camion.errors" class="text-danger">
+          <!-- <div *ngIf="enviado && formulario.controls.peso_de_camion.errors" class="text-danger">
             {{ formulario.controls.peso_de_camion.errors.required ? 'El peso del camión es obligatorio' : '' }}
-          </div>
+          </div> -->
         </div>
-
-       
-
         <button type="submit" class="btn btn-primary">Enviar</button>
       </form>
     </div>

@@ -1,0 +1,35 @@
+
+<h1>Listado de Cuentas</h1>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID de cuenta</th>
+        <th>Estado de cuenta</th>
+        <th>Peso total de envío</th>
+        <th>Número de parcialidades</th>
+        <th>Matrículas autorizadas</th>
+        <th>Usuario agricultor</th>
+        <th>Número de pesajes registrados</th>
+        <th>Parcialidades generadas</th>
+        <th>Fecha de creación</th>
+        <th>Fecha de modificación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cuenta of cuentas">
+        <td>{{ cuenta.id_cuenta }}</td>
+        <td>{{ cuenta.estado_cuenta }}</td>
+        <td>{{ cuenta.peso_total_de_envio }}</td>
+        <td>{{ cuenta.numero_parcialidades }}</td>
+        <td>{{ cuenta.matriculas_autorizadas }}</td>
+        <td>{{ cuenta.usuario_agricultor }}</td>
+        <td>{{ cuenta.numero_pesajes_registrados }}</td>
+        <td>{{ cuenta.parcialidades_generadas }}</td>
+        <td>{{ cuenta.fecha_creacion | date }}</td>
+        <td>{{ cuenta.fecha_modificacion | date }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

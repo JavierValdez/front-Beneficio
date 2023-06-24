@@ -8,6 +8,8 @@
       <li *ngIf="esBeneficio"><a [style.color]="color1" (click)="onVerIngresoGarita()">Ingreso Garita</a></li>
       <li *ngIf="esBeneficio"><a [style.color]="color1" (click)="onVerInactivarTransportista()">Inactivar Transportista</a></li>
       <li *ngIf="esAgricultor"><a [style.color]="color1" (click)="onVerRegistrarParcialidad()">Registrar Parcialidad</a></li>
+      <li *ngIf="esPesoCabal"><a [style.color]="color1" (click)="onVerPesoCabal()">Registrar Pesaje </a></li>
+      <li *ngIf="esAgricultor"><a [style.color]="color1" (click)="onVerListado()">Listado Cuentas </a></li>
       <!--<li *ngIf="esTrasportista"><a [style.color]="color4" (click)="onVerQR($event)">{{ opcion4 }}</a></li>-->
       <li><a [style.color]="color5" (click)="cerrarSesion()">{{ opcion5 }}</a></li>
     </ul>
@@ -19,7 +21,9 @@
   <app-registrar-parcialidad *ngIf="verRegistrarParcialidad"></app-registrar-parcialidad>
   <app-crear-cuenta *ngIf="verCrearCuenta"> </app-crear-cuenta>
   <app-crear-trasporte *ngIf="verCrearTransporte"> </app-crear-trasporte>
+  <app-peso-cabal *ngIf="verPesoCabal"> </app-peso-cabal>
   <app-inactivar-trasportista *ngIf="verInactivarTransportista"></app-inactivar-trasportista>
+  <app-listado-cuentas *ngIf="verListado"></app-listado-cuentas>
   <app-login-form *ngIf="verLogin" (loginSuccess)="usuarioLogueado()"
     (showRegister)="verRegistroBeneficio()"></app-login-form>
 
