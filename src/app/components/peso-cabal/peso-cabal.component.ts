@@ -105,10 +105,72 @@ export class PesoCabalComponent implements OnInit {
         Swal.fire({
           icon: 'success',
           title: 'Sumatoria de Pesos',
-          text: data.mensaje
+          text: data
         })
+        console.log('Impresion de datos');
+        console.log(data);
         //Genera el pdf con los datos de la sumatoria
-        let html='<h1>'+data.mensaje+'</h1>'
+        let html = `<!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="UTF-8">
+          <title>Página A4</title>
+          <style>
+            @page {
+              size: A4;
+              margin: 0;
+            }
+
+            body {
+              margin: 0;
+              font-family: Arial, sans-serif;
+              font-size: 12px;
+            }
+
+            .container {
+              width: 100%;
+              height: 100vh;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+
+            .content {
+              width: 80%;
+              padding: 20px;
+              background-color: #f2f2f2;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+            }
+
+            table {
+              width: 100%;
+              border-collapse: collapse;
+              margin-bottom: 20px;
+              border: 1px solid #ccc;
+            }
+
+            th, td {
+              border: 1px solid #ccc;
+              padding: 8px;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="content">
+              <table>
+                <tr>
+                  <th>Pesaje Faltante o Sobrante:</th>
+                  <td style="width: 100%;">${data}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </body>
+        </html>`;
+
+
         this.pdfService.generatePdf(html);
 
 
@@ -124,6 +186,9 @@ export class PesoCabalComponent implements OnInit {
           this.consultarSumatoria(this.formulario.value);
 
         }
+        //imprimir valor formulario
+        console.log(this.formulario.value);
+        console.log('Forced to print');
 
       }
     );

@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgModel } from '@angular/forms'; // Importa NgModel para utilizar [(ngModel)]
 import { GestorService } from 'src/app/services/gestor.service';
+import { NgxImageCompressService } from 'ngx-image-compress';
+
 
 //Importaciond de swwtalert2
 import Swal from 'sweetalert2';
@@ -27,7 +29,7 @@ export class CrearTrasportistaComponent implements OnInit {
 verQR: boolean = false;
 
 
-  constructor(private gestorService: GestorService) { }
+  constructor(private gestorService: GestorService, private imageCompress: NgxImageCompressService) { }
 
   ngOnInit(): void {
   }
@@ -44,8 +46,8 @@ verQR: boolean = false;
         title: 'Campos Vacios',
         text: 'Debera llenar todos los campos'
       })
-   
- 
+
+
     }else if(this.nombres==''){
 
       Swal.fire({
@@ -79,9 +81,9 @@ verQR: boolean = false;
 
     else{
 
-    
 
-    
+
+
     // Swal.fire({
 
 
@@ -158,17 +160,24 @@ verQR: boolean = false;
     const reader = new FileReader();
     reader.onload = () => {
       const base64String = reader.result as string;
-      this.imagenBase64 = base64String.split(',')[1];
+
+      // Comprimir la imagen
+      this.imageCompress.compressFile(base64String, -1, 25, 50).then(
+        result => {
+          // Obtener la imagen comprimida en base64
+          const compressedBase64 = result.split(',')[1];
+          this.imagenBase64 = compressedBase64;
+        }
+      );
     };
 
     reader.readAsDataURL(file);
-    //mostrar despues de 5 segundos
-    setTimeout(() => {
 
+    setTimeout(() => {
+      console.log("Imagen en base64");
       console.log(this.imagenBase64);
     }, 100);
-
-
   }
+
 
 }

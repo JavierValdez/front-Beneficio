@@ -9,7 +9,7 @@ export class PdfServiceService {
 
   constructor() { }
   generatePdf(content: string) {
-    let doc = new jsPDF();
+    let doc = new jsPDF('p', 'pt', 'a4');
     //doc posicion inicial
     const htmlContent=content;
     doc.html(content
