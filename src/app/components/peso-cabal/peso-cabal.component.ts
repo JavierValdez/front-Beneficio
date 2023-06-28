@@ -102,74 +102,58 @@ export class PesoCabalComponent implements OnInit {
   consultarSumatoria(json: any) {
     this.gestorService.consultaSumatoria(json).subscribe(
       (data: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: 'Sumatoria de Pesos',
-          text: data
-        })
+
         console.log('Impresion de datos');
-        console.log(data);
+        console.log(data.sumatoriaPeso);
+        console.log(data.peso_total_de_envio);
         //Genera el pdf con los datos de la sumatoria
-        let html = `<!DOCTYPE html>
-        <html>
-        <head>
-          <meta charset="UTF-8">
-          <title>Página A4</title>
-          <style>
-            @page {
-              size: A4;
-              margin: 0;
-            }
+        //calculo de exceso o falta entre sumatoria de peso y peso total de envio si excede el 5%
+        let porcentajeExceso=0;
+        let mensaje='';
+        if(data.sumatoriaPeso>data.peso_total_de_envio){
 
-            body {
-              margin: 0;
-              font-family: Arial, sans-serif;
-              font-size: 12px;
-            }
+          let exceso=data.sumatoriaPeso-data.peso_total_de_envio;
+          porcentajeExceso=exceso*100/data.peso_total_de_envio;
+          if(porcentajeExceso>5){
+            mensaje='Exceso de peso';
 
-            .container {
-              width: 100%;
-              height: 100vh;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-            }
+          }
+          else{
+            porcentajeExceso=0;
+          }
+        }
+        else{
+          let falta=data.peso_total_de_envio-data.sumatoriaPeso;
+          porcentajeExceso=falta*100/data.peso_total_de_envio;
+          if(porcentajeExceso>5){
+          mensaje='Falta de peso';
+          }
+          else{
+            porcentajeExceso=0;
+          }
+        }
 
-            .content {
-              width: 80%;
-              padding: 20px;
-              background-color: #f2f2f2;
-              border: 1px solid #ccc;
-              border-radius: 5px;
-            }
 
-            table {
-              width: 100%;
-              border-collapse: collapse;
-              margin-bottom: 20px;
-              border: 1px solid #ccc;
-            }
 
-            th, td {
-              border: 1px solid #ccc;
-              padding: 8px;
-            }
-          </style>
-        </head>
-        <body>
-          <div class="container">
-            <div class="content">
-              <table>
-                <tr>
-                  <th>Pesaje Faltante o Sobrante:</th>
-                  <td style="width: 100%;">${data}</td>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </body>
-        </html>`;
 
+
+        let datos={
+          sumatoriaPeso:data.sumatoriaPeso,
+          peso_total_de_envio:data.peso_total_de_envio,
+          porcentajeExceso:porcentajeExceso,
+          mensaje:mensaje
+        }
+
+
+     let html = `
+        <div style="width:275px">
+          <h1>Datos de Envío</h1>
+          <p>Sumatoria de Peso: ${datos.sumatoriaPeso}</p>
+          <p>Peso Total de Envío: ${datos.peso_total_de_envio}</p>
+          <p>Porcentaje de Exceso: ${datos.porcentajeExceso}</p>
+          <p>Mensaje: ${datos.mensaje}</p>
+        </div>
+        `;
 
         this.pdfService.generatePdf(html);
 

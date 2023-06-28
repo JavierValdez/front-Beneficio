@@ -52,7 +52,17 @@ export class InactivarTrasportistaComponent implements OnInit {
       console.log(respuesta);
       this.licencias = respuesta;
       //si estado es 1030 remover
-      this.licencias = this.licencias.filter((licencia: any) => licencia.estado != 1030);
+      this.licencias = this.licencias.filter((licencia: any) => licencia.estado != 1028);
+      //si disponibilidad es true reemplazar por disponible
+      this.licencias.forEach((licencia: any) => {
+        if (licencia.disponibilidad == true) {
+          licencia.disponibilidad = "Disponible";
+        }
+        else {
+          licencia.disponibilidad = "No disponible";
+        }
+      }
+      );
 
     }
     );

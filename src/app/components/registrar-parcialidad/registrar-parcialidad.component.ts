@@ -157,8 +157,8 @@ export class RegistrarParcialidadComponent implements OnInit {
   }
   generarHTML() {
     const titulo = 'Registro de Parcialidad';
-    let html = '<h8>' + titulo + '</h9>';
-    html += '<table style="margin: 0 auto; font-size: 3px;">';
+    let html = '<div>' + titulo + '</div>';
+    html += '<table style="width:275px">';
 
     Object.keys(this.formulario.controls).forEach(key => {
       const label = key.replace('_', ' ').toUpperCase();

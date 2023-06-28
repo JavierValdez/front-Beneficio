@@ -3,6 +3,7 @@
   <table class="table">
     <thead>
       <tr>
+        <th>Foto</th> <!-- Nuevo campo -->
         <th>Número de Licencia</th>
         <th>Nombres</th>
         <th>Apellidos</th>
@@ -15,6 +16,9 @@
     </thead>
     <tbody>
       <tr *ngFor="let licencia of licencias">
+        <td>
+          <img [src]="'data:image/png;base64,' + licencia.foto" alt="Foto" width="50" height="50">
+        </td> <!-- Mostrar miniatura de la foto -->
         <td>{{ licencia.numero_licencia }}</td>
         <td>{{ licencia.nombres }}</td>
         <td>{{ licencia.apellidos }}</td>

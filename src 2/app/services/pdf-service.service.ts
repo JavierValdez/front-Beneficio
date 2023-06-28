@@ -9,15 +9,23 @@ export class PdfServiceService {
 
   constructor() { }
   generatePdf(title: string, content: string) {
-    let doc = new jsPDF();
-    //doc posicion inicial
-    const htmlContent=content;
-    doc.html(content
-      , {
-        callback: (doc) => {
-          doc.save('document.pdf');
-        }
+    const doc = new jsPDF({
+      orientation: "portrait",
+      format: 'letter'
       });
+    //doc posicion inicial
+    const htmlContent = `
+    <div style="text-align: center;">
+      <h1>${title}</h1>
+      ${content}
+    </div>
+  `;
+
+  doc.html(htmlContent, {
+    callback: (doc) => {
+      doc.save('document.pdf');
+    }
+  });
   }
 
 }
